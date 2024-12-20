@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Video Showcase</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #00c6ff, #0072ff); /* تدرج اللون السماوي */
+            color: #fff;
+        }
+
+        header {
+            background: linear-gradient(135deg, #66ccff, #3399ff); /* تدرج اللون السماوي الفاتح */
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between; /* لتوزيع المحتوى بين اليمين واليسار */
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            order: -1; /* لضمان ظهور العنوان على اليسار */
+        }
+
+        nav {
+            margin-top: 10px;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #00bcd4, #0097a7); /* اللون السماوي للأزرار */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(135deg, #00bcd4, #0097a7); /* تدرج سماوي عند التمرير */
+            transform: translateY(-3px);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            background: rgba(44, 62, 80, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            color: #ecf0f1;
+        }
+
+        .video-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .video-container video {
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00bcd4, #0097a7); /* تدرج سماوي للزر */
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #ecf0f1;
+            background: linear-gradient(135deg, #66ccff, #3399ff); /* تدرج اللون السماوي للفوتر */
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .designer-name {
+            font-weight: bold;
+            color: #00bcd4;
+            background: linear-gradient(135deg, #0097a7, #00bcd4);
+            padding: 3px 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Video Project</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="code.html"> Code</a></li>
+                <li><a href="book.html"> Book</a></li>
+                <li><a href="view.html">Team </a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="video-container">
+            <video controls poster="fier.jpg">
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+        <div class="text-center">
+            <a href="video.mp4" download class="btn">Download Video</a>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #00c6ff, #0072ff); /* خلفية متدرجة بدرجات اللون السماوي */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        nav {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            animation: slideDown 1s ease-out;
+            display: flex;
+            justify-content: space-between; /* توزيع المحتويات على الجانبين */
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #00bcd4; /* لون سماوي عند التمرير */
+            color: #000;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 صور في كل صف */
+            gap: 20px;
+            justify-items: center;
+            padding: 20px;
+        }
+
+        .student-item {
+            width: 100%;
+            max-width: 300px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #b2f7ef, #1c92d2); /* تدرج لون سماوي هادئ */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+            text-align: center;
+            padding: 15px;
+            animation: moveAndScale 4s infinite alternate ease-in-out;
+        }
+
+        .student-item img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            border-radius: 10px;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        .student-name {
+            margin-top: 10px;
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* أنيميشن الحركة والتمدد */
+        @keyframes moveAndScale {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            25% {
+                transform: translateY(-10px) scale(1.05);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translateY(10px) scale(1.1);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translateY(-10px) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* أنيميشن التلاشي */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">Work Team</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="code.html">Project Code</a></li>
+            <li><a href="book.html">Project Book</a></li>
+            <li><a href="video.html">Project Video</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="student-item">
+            <img src="داود1.jpg" alt="Student 1">
+            <div class="student-name">Mohamed Hamd Dawood</div>
+        </div>
+        <div class="student-item">
+            <img src="فايز.jpg" alt="Student 2">
+            <div class="student-name">Mohamed Ahmed Fayez</div>
+        </div>
+        <div class="student-item">
+            <img src="عكاشه.jpg" alt="Student 3">
+            <div class="student-name">Mohamed Sophy Okasha</div>
+        </div>
+        <div class="student-item">
+            <img src="سجيني.jpg" alt="Student 4">
+            <div class="student-name">Mohamed Adel Elsgeny</div>
+        </div>
+        <div class="student-item">
+            <img src="مهدي.png" alt="Student 5">
+            <div class="student-name">Mahmoud Mahdy Dawood</div>
+        </div>
+        <div class="student-item">
+            <img src="بنت.jpg" alt="Student 6">
+            <div class="student-name">Soad Mohamed Hamed</div>
+        </div>
+    </div>
+</body>
+
+</html>

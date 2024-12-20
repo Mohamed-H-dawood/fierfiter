@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #00bcd4; /* السماوي */
+            color: #fff;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* الهيدر على اليمين يحتوي على الكلمة */
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-left h1 {
+            margin-left: 10px;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 20px;
+            margin-left: auto;
+        }
+
+        .header-links a {
+            color: #fff;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header-links a:hover {
+            color: #f39c12; /* تغيير اللون عند التمرير */
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #27293d;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .code-container {
+            padding: 20px;
+            background-color: #1e1e2f;
+            color: #c3e88d;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 8px;
+            overflow-x: auto;
+            line-height: 1.6;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        .code-container pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 1rem;
+            color: #aaa;
+            background-color: #333;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        footer a {
+            color: #68a8e4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- الجزء اليساري: الكلمة -->
+        <div class="header-left">
+            <h1>Project Code</h1>
+        </div>
+
+        <!-- الجزء اليميني: الروابط -->
+        <div class="header-links">
+            <a href="index.html">Home</a>
+            <a href="code.html">Code</a>
+            <a href="book.html">Book</a>
+            <a href="video.html">Video</a>
+            <a href="view.html">Team</a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="code-container">
+                <pre>
+#include &lt;SoftwareSerial.h&gt;  //include SoftwareSerial.h library
+
+#define enA 10 // Enable1 L298 Pin enA 
+int LM1 = 8;              // المحرك الأيسر الأمامي
+int LM2 = 9;              // المحرك الأيسر الخلفي
+int RM1 = 10;             // المحرك الأيمن الأمامي
+int RM2 = 11;             // المحرك الأيمن الخلفي
+#define enB 5 // Enable2 L298 Pin enB 
+#define ir_R A0
+#define ir_F A1
+#define ir_L A2
+#define Gaze A3
+#define servo A4
+#define pump A5
+int Speed = 160; // Write The Duty Cycle 0 to 255 Enable for Motor Speed
+int s1, s2, s3 , s4;
+const String PHONE = "+201065001384"; // استخدام الرقم الجديد مع كود البلد
+#define rxPin 2
+#define txPin  3
+SoftwareSerial sim800L(rxPin, txPin);
+
+void setup()
+{
+  Serial.begin(115200);
+  sim800L.println("AT");
+  delay(1000);
+  sim800L.println("AT+CMGF=1");
+  delay(1000);
+  Serial.begin(9600); // start serial communication at 9600bps
+  
+  pinMode(ir_R, INPUT); // declare fire sensor pin as input
+  pinMode(ir_F, INPUT); // declare fire sensor pin as input
+  pinMode(ir_L, INPUT); // declare fire sensor pin as input
+  pinMode(Gaze, INPUT); // declare Gaze sensor pin as input
+  pinMode(enA, OUTPUT); // declare as output for L298 Pin enA
+  pinMode(LM1, OUTPUT); // declare as output for L298 Pin in1
+  pinMode(LM2, OUTPUT); // declare as output for L298 Pin in2
+  pinMode(RM1, OUTPUT); // declare as output for L298 Pin in3
+  pinMode(RM2, OUTPUT); // declare as output for L298 Pin in4
+  pinMode(enB, OUTPUT); // declare as output for L298 Pin enB
+  pinMode(servo, OUTPUT);
+  pinMode(pump, OUTPUT);
+
+  for (int angle = 90; angle <= 140; angle += 5)
+  {
+    servoPulse(servo, angle);
+  }
+
+  for (int angle = 140; angle >= 40; angle -= 5)
+  {
+    servoPulse(servo, angle);
+  }
+
+  for (int angle = 40; angle <= 95; angle += 5)
+  {
+    servoPulse(servo, angle);
+  }
+
+  analogWrite(enA, Speed);
+  analogWrite(enB, Speed);
+  delay(500);
+
+  while (sim800L.available())
+  {
+    Serial.println(sim800L.readString());
+  }
+}
+
+void loop()
+{
+  s1 = analogRead(ir_R);
+  s2 = analogRead(ir_F);
+  s3 = analogRead(ir_L);
+  s3 = analogRead(Gaze);             
+
+  // شرط للكشف عن الغاز أو الحريق
+  if (s1 < 100 || s2 < 100 || s3 < 100)
+  {
+    make_call();
+  }
+  else if(s4 < 100 )
+  {
+    send_sms();
+  }
+
+  // عند الكشف عن الحريق على أحد الحساسات
+  if (s1 < 100 || s2 < 100 || s3 < 100) {
+    Stop();
+    digitalWrite(pump, HIGH); // تشغيل المضخة
+    for (int angle = 90; angle >= 40; angle -= 3) {
+      servoPulse(servo, angle);
+    }
+    for (int angle = 40; angle <= 90; angle += 3) {
+      servoPulse(servo, angle);
+    }
+  } else {
+    digitalWrite(pump, LOW);  // إيقاف المضخة
+    Stop();
+  }
+
+  // تفعيل الحركات بناءً على القراءات
+  if (s1 >= 200 && s1 <= 500) {
+    digitalWrite(pump, LOW);
+    Left();
+    delay(200);
+  } else if (s2 >= 200 && s2 <= 500) {
+    digitalWrite(pump, LOW);
+    forward();
+    delay(200);
+  } else if (s3 >= 200 && s3 <= 500) {
+    digitalWrite(pump, LOW);
+    Right();
+    delay(200);
+  } else {
+    digitalWrite(pump, LOW);
+    Stop();
+  }
+  delay(200);
+}
+
+// دالة لتوليد نبضات السيرفو
+void servoPulse(int pin, int angle)
+{
+  int pwm = (angle * 11) + 500;
+  digitalWrite(pin, HIGH);
+  delayMicroseconds(pwm);
+  digitalWrite(pin, LOW);
+  delay(50);
+}
+
+// دوال الحركة
+void forward()
+{
+  digitalWrite(LM1, HIGH); // Right Motor forward Pin
+  digitalWrite(LM2, LOW);  // Right Motor backward Pin
+  digitalWrite(RM1, HIGH);  // Left Motor backward Pin
+  digitalWrite(RM2, LOW); // Left Motor forward Pin
+}
+
+void Left()
+{
+  digitalWrite(LM1, HIGH);
+  digitalWrite(LM2, LOW);
+  digitalWrite(RM1, LOW);
+  digitalWrite(RM2, LOW);
+}
+
+void Right()
+{
+  digitalWrite(LM1, LOW);
+  digitalWrite(LM2, LOW);
+  digitalWrite(RM1, HIGH);
+  digitalWrite(RM2, LOW);
+}
+
+void Stop()
+{
+  digitalWrite(LM1, LOW);
+  digitalWrite(LM2, LOW);
+  digitalWrite(RM1, LOW);
+  digitalWrite(RM2, LOW);
+}
+
+</pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Project Code. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
